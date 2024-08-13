@@ -1,0 +1,10 @@
+<odoo>
+    <record id="action_zalo_chat_popup" model="ir.actions.act_window">
+        <field name="name">Send Zalo Message</field>
+        <field name="res_model">zalo_message.zalo.chat.message</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_zalo_chat_popup_form"/>
+        <field name="target">new</field>
+        <!-- <field name="context">{'default_zalo_user_id_fl': active_id}</field> -->
+    </record>
+</odoo>

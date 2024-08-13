@@ -1,0 +1,25 @@
+<odoo>
+    <!-- Định nghĩa một nhiệm vụ định kỳ để kiểm tra và cập nhật mã thông báo Zalo -->
+    <record id="ir_cron_check_and_update_token" model="ir.cron">
+        <!-- Tên của nhiệm vụ định kỳ -->
+        <field name="name">Check and Update Zalo Token</field>
+        
+        <!-- Mô hình mà nhiệm vụ này sẽ sử dụng -->
+        <field name="model_id" ref="base.model_res_config_settings"/>
+        
+        <!-- Loại trạng thái nhiệm vụ, sử dụng code để chỉ định hàm Python -->
+        <field name="state">code</field>
+        
+        <!-- Hàm Python sẽ được gọi để thực hiện nhiệm vụ -->
+        <field name="code">model.check_and_update_token()</field>
+        
+        <!-- Thời gian giữa các lần chạy nhiệm vụ, ở đây là 5 phút -->
+        <field name="interval_number">5</field>
+        
+        <!-- Đơn vị thời gian, ở đây là phút -->
+        <field name="interval_type">minutes</field>
+        
+        <!-- Số lần nhiệm vụ sẽ được gọi; -1 có nghĩa là không giới hạn -->
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>

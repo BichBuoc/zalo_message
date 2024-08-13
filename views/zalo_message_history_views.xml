@@ -1,0 +1,75 @@
+<odoo>
+    <!-- Định nghĩa menu gốc cho Zalo -->
+    <menuitem id="menu_zalo_root" name="Lịch Sử Tin Nhắn Zalo" sequence="10"/>
+
+    <!-- Định nghĩa view dạng tree (danh sách) cho lịch sử tin nhắn Zalo -->
+    <record id="view_zalo_message_history_tree" model="ir.ui.view">
+        <!-- Tên của view là zalo.message.history.tree -->
+        <field name="name">zalo.message.history.tree</field>
+        <!-- Mô hình dữ liệu được sử dụng là zalo_message.history -->
+        <field name="model">zalo_message.history</field>
+        <!-- Bắt đầu định nghĩa giao diện dạng XML -->
+        <field name="arch" type="xml">
+            <!-- Định nghĩa một view dạng danh sách (tree view) với tiêu đề "Lịch Sử Tin Nhắn Zalo" -->
+            <tree string="Lịch Sử Tin Nhắn Zalo">
+                <!-- Trường hiển thị ID người dùng Zalo -->
+                <field name="zalo_user_id_fl"/>
+                <!-- Trường hiển thị tiêu đề tin nhắn -->
+                <field name="message_subject"/>
+                <!-- Trường hiển thị nội dung tin nhắn -->
+                <field name="message_content"/>
+                <!-- Trường hiển thị ngày gửi tin nhắn -->
+                <field name="send_date"/>
+                <!-- Trường hiển thị trạng thái tin nhắn -->
+                <field name="status"/>
+                <!-- Trường hiển thị tin nhắn phản hồi từ người nhận -->
+                <field name="response_message"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Định nghĩa view dạng form cho lịch sử tin nhắn Zalo -->
+    <record id="view_zalo_message_history_form" model="ir.ui.view">
+        <!-- Tên của view là zalo.message.history.form -->
+        <field name="name">zalo.message.history.form</field>
+        <!-- Mô hình dữ liệu được sử dụng là zalo_message.history -->
+        <field name="model">zalo_message.history</field>
+        <!-- Bắt đầu định nghĩa giao diện dạng XML -->
+        <field name="arch" type="xml">
+            <!-- Định nghĩa một view dạng form với tiêu đề "Lịch Sử Tin Nhắn Zalo" -->
+            <form string="Lịch Sử Tin Nhắn Zalo">
+                <!-- Bắt đầu phần thân của form -->
+                <sheet>
+                    <!-- Nhóm các trường lại với nhau -->
+                    <group>
+                        <!-- Trường hiển thị ID người dùng Zalo -->
+                        <field name="zalo_user_id_fl"/>
+                        <!-- Trường hiển thị tiêu đề tin nhắn -->
+                        <field name="message_subject"/>
+                        <!-- Trường hiển thị nội dung tin nhắn -->
+                        <field name="message_content"/>
+                        <!-- Trường hiển thị ngày gửi tin nhắn -->
+                        <field name="send_date"/>
+                        <!-- Trường hiển thị trạng thái tin nhắn -->
+                        <field name="status"/>
+                        <!-- Trường hiển thị tin nhắn phản hồi từ người nhận -->
+                        <field name="response_message"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Định nghĩa hành động để mở view lịch sử tin nhắn Zalo -->
+    <record id="action_zalo_message_history" model="ir.actions.act_window">
+        <!-- Tên của hành động là "Lịch Sử Tin Nhắn Zalo" -->
+        <field name="name">Lịch Sử Tin Nhắn Zalo</field>
+        <!-- Mô hình dữ liệu được sử dụng là zalo_message.history -->
+        <field name="res_model">zalo_message.history</field>
+        <!-- Chế độ xem bao gồm cả tree view và form view -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Thêm menu item cho lịch sử tin nhắn Zalo dưới menu gốc đã định nghĩa -->
+    <menuitem id="menu_zalo_message_history" name="Lịch Sử Tin Nhắn Zalo" parent="menu_zalo_root" action="action_zalo_message_history"/>
+</odoo>

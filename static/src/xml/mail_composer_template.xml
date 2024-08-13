@@ -1,0 +1,29 @@
+<odoo>
+    <template id="mail_composer_template">
+        <div class="flex-shrink-0 px-3 pt-3 text-truncate small mb-2" style="margin-left:48px">
+            <span class="fw-bold">Đến:</span> Không có người nhận
+        </div>
+        <div class="px-3" style="margin-left:48px;">
+            <t t-foreach="recipients" t-as="recipient">
+                <div class="o-mail-SuggestedRecipient" data-partner-id="<t t-esc="recipient.id"/>">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" data-zalo-id="<t t-esc="recipient.zalo_user_id_fl"/>" id="checkbox_<t t-esc="recipient.id"/>">
+                        <label class="form-check-label" for="checkbox_<t t-esc="recipient.id"/>">
+                            <t t-esc="recipient.name"/> (<t t-esc="recipient.email"/>)
+                        </label>
+                    </div>
+                </div>
+            </t>
+            <t t-foreach="recipients" t-as="recipient">
+                <div class="o-mail-SuggestedRecipient" data-partner-id="<t t-esc="recipient.id"/>">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" data-zalo-id="<t t-esc="recipient.zalo_user_id_fl"/>" id="zalo_checkbox_<t t-esc="recipient.id"/>">
+                        <label class="form-check-label" for="zalo_checkbox_<t t-esc="recipient.id"/>">
+                            Zalo ID: <t t-esc="recipient.zalo_user_id_fl"/>
+                        </label>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

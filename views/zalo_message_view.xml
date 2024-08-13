@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Định nghĩa form view cho mô hình zalo.message -->
+    <record id="view_zalo_message_form" model="ir.ui.view">
+        <field name="name">zalo.message.form</field> <!-- Tên của view -->
+        <field name="model">zalo.message</field> <!-- Mô hình mà view này áp dụng -->
+        <field name="arch" type="xml">
+            <!-- Bắt đầu định nghĩa form -->
+            <form string="Zalo Message">
+                <!-- Nhóm các trường dữ liệu cơ bản -->
+                <group>
+                    <!-- <field name="access_token"/> Trường để nhập access token -->
+                    <field name="user_id"/> <!-- Trường để nhập ID người dùng -->
+                    <field name="message_text"/> <!-- Trường để nhập nội dung tin nhắn -->
+                </group>
+                <group>
+                    <button string="Send" type="object" name="send_message" class="btn-primary"/> <!-- Nút gửi tin nhắn, gọi hàm send_message -->
+                    <span class="oe_statusbar_status">
+                        <field name="status"/> <!-- Hiển thị trạng thái hiện tại của tin nhắn -->
+                    </span>
+                </group>
+                <!-- Nhóm để hiển thị phản hồi từ API, chỉ đọc -->
+                <group>
+                    <field name="response_message" readonly="1"/> <!-- Trường hiển thị phản hồi, không cho phép chỉnh sửa -->
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Định nghĩa tree view cho mô hình zalo.message -->
+    <record id="view_zalo_message_tree" model="ir.ui.view">
+        <field name="name">zalo.message.tree</field> <!-- Tên của view -->
+        <field name="model">zalo.message</field> <!-- Mô hình mà view này áp dụng -->
+        <field name="arch" type="xml">
+            <!-- Bắt đầu định nghĩa tree view -->
+            <tree string="Zalo Messages">
+                <field name="user_id"/> <!-- Cột hiển thị ID người dùng -->
+                <field name="message_text"/> <!-- Cột hiển thị nội dung tin nhắn -->
+                <field name="status"/> <!-- Cột hiển thị trạng thái của tin nhắn -->
+                <field name="response_message"/> <!-- Cột hiển thị phản hồi từ API -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Định nghĩa hành động để mở form và tree view -->
+    <record id="zalo_message_action" model="ir.actions.act_window">
+        <field name="name">Zalo Messages</field> <!-- Tên của hành động -->
+        <field name="res_model">zalo.message</field> <!-- Mô hình áp dụng hành động -->
+        <field name="view_mode">tree,form</field> <!-- Chế độ xem: tree và form -->
+    </record>
+
+    <!-- Định nghĩa menu và menu con cho module -->
+    <menuitem id="menu_zalo_message_root" name="Zalo Message" sequence="10"/> <!-- Menu chính cho module -->
+    <menuitem id="menu_zalo_message" name="Messages" parent="menu_zalo_message_root" action="zalo_message_action" sequence="10"/> <!-- Menu con, kích hoạt hành động zalo_message_action -->
+</odoo>

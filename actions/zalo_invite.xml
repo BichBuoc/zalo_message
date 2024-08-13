@@ -1,0 +1,10 @@
+<odoo>
+    <record id="action_zalo_invite" model="ir.actions.act_window">
+        <field name="name">Mời Quan Tâm Zalo</field>
+        <field name="res_model">zalo_message.zalo.invite</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="zalo_message.view_zalo_invite_form"/>
+        <field name="target">new</field>
+        <!-- <field name="context">{"default_partner_id": active_id}</field> -->
+    </record>
+</odoo>

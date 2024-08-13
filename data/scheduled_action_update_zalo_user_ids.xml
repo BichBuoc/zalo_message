@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Scheduled Action -->
+    <record id="ir_cron_update_zalo_user_ids" model="ir.cron">
+        <!-- Tên của hành động định kỳ -->
+        <field name="name">Update Zalo User IDs</field>
+        
+        <!-- Mô hình mà hành động này sẽ hoạt động trên -->
+        <field name="model_id" ref="base.model_res_partner"/>
+        
+        <!-- Loại trạng thái hành động, sử dụng code để chỉ định hàm Python -->
+        <field name="state">code</field>
+        
+        <!-- Hàm Python sẽ được gọi để thực hiện hành động -->
+        <field name="code">model.update_zalo_user_ids()</field>
+        
+        <!-- Đánh dấu hành động này là hoạt động, cho phép nó được thực thi -->
+        <field name="active" eval="True"/>
+        
+        <!-- Thời gian giữa các lần chạy hành động, ở đây là 5 phút -->
+        <field name="interval_number">5</field>
+        
+        <!-- Đơn vị thời gian, ở đây là phút -->
+        <field name="interval_type">minutes</field>
+        
+        <!-- Số lần hành động sẽ được gọi; -1 có nghĩa là không giới hạn -->
+        <field name="numbercall" eval="-1"/>
+        
+        <!-- Cập nhật tất cả các bản ghi trong mô hình khi thực hiện hành động -->
+        <field name="doall" eval="True"/>
+    </record>
+</odoo>

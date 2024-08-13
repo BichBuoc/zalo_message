@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Nút gửi email mời quan tâm Zalo OA trong form liên hệ -->
+    <record id="view_partner_form_custom_email" model="ir.ui.view">
+        <field name="name">res.partner.form.custom.email</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <button name="action_send_email"
+                        string="Mời quan tâm Zalo OA"
+                        type="object"
+                        class="oe_highlight"
+                        icon="fa-envelope"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Cập nhật form liên hệ để hiển thị nút dựa trên điều kiện -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.custom.zalo</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Thêm trường Zalo ID sau nhóm thông tin liên hệ -->
+            <xpath expr="//sheet/group/group" position="inside">
+                <field name="zalo_user_id_fl" string="Zalo User ID"/>
+            </xpath>
+            <!-- Thêm nút Zalo Action sau trường Zalo ID -->
+            <xpath expr="//field[@name='zalo_user_id_fl']" position="after">
+                <button name="action_handle_zalo_buttons"
+                        type="object"
+                        string="Thao tác Zalo"
+                        class="oe_highlight"
+                        icon="fa-comments"/>
+            </xpath>
+            
+            <!-- <xpath expr="//div[@class='oe_chatter']" position="attributes" >
+                <button name="action_open_zalo_chat_popup"
+                        type="object"
+                        class="btn btn-primary"
+                        string="Gửi Tin Nhắn Zalo"/>
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/> 
+                    <attribute name="message_ids"></attribute>
+            </xpath> -->
+        </field>
+    </record>
+</odoo>

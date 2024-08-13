@@ -1,0 +1,23 @@
+<odoo>
+    <!-- View Form cho Zalo Message -->
+    <record id="view_zalo_message_form" model="ir.ui.view">
+        <field name="name">zalo.message.form</field>
+        <field name="model">zalo.message</field>
+        <field name="arch" type="xml">
+            <form string="Zalo Message">
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="message_text"/>
+                        <field name="response_message" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="send_message" type="object" string="Send Message" class="oe_highlight"/>
+                        <!-- <button name="action_cancel" type="object" string="Cancel" class="oe_link" attrs="{'invisible': [('status', '=', 'sent')]}"/> -->
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
